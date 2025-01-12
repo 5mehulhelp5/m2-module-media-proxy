@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="samjuk" translate="label" sortOrder="10">
+            <label>SamJUK</label>
+        </tab>
+        <section id="samjuk_media_proxy" translate="label" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="0">
+            <class>separator-top</class>
+            <label>Media Proxy</label>
+            <tab>samjuk</tab>
+            <resource>SamJUK_MediaProxy::config</resource>
+
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>General</label>
+
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Feature flag for the entire module</comment>
+                </field>
+
+                <field id="mode" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Mode</label>
+                    <source_model>SamJUK\MediaProxy\Model\Config\Source\Mode</source_model>
+                </field>
+
+                <field id="upstream_host" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Upstream Host</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="SamJUK\MediaProxy\Api\RequestedMediaInterface" type="SamJUK\MediaProxy\Model\RequestedMedia" />
+    <preference for="SamJUK\MediaProxy\Api\ConfigInterface" type="SamJUK\MediaProxy\Model\Config" />
+
+    <type name="Magento\MediaStorage\App\Media">
+        <plugin name="samjuk-mediaproxy" type="SamJUK\MediaProxy\Plugin\Media" sortOrder="0" />
+    </type>
+</config>
