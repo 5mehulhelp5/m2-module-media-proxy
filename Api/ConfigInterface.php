@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace SamJUK\MediaProxy\Api;
 
-use SamJUK\MediaProxy\Enum\Mode;
-
 interface ConfigInterface
 {
 
@@ -23,9 +21,9 @@ interface ConfigInterface
 
     /**
      * Get the current mode the module is operating in.
-     * @return Mode
+     * @return string
      */
-    public function getMode(): Mode;
+    public function getMode(): string;
 
     /**
      * Is the module enabled & operating in proxy mode for the current store.

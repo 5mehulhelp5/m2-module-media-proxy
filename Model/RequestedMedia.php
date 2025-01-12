@@ -10,10 +10,14 @@ use Magento\Framework\Filesystem\DriverInterface as FilesystemDriverInterface;
 
 class RequestedMedia implements RequestedMediaInterface
 {
-    private readonly string $relativePath;
-    private readonly string $absolutePubPath;
-    private readonly string $upstreamHost;
-    private readonly FilesystemDriverInterface $filesystem;
+    /** @readonly */
+    private string $relativePath;
+    /** @readonly */
+    private string $absolutePubPath;
+    /** @readonly */
+    private string $upstreamHost;
+    /** @readonly */
+    private FilesystemDriverInterface $filesystem;
 
     public function __construct(
         FilesystemDriverInterface $filesystem,

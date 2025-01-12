@@ -1,17 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SamJUK\MediaProxy\Model\Config\Source;
 
-use SamJUK\MediaProxy\Enum\Mode as ModeEnum;
 use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
 
 class Mode extends AbstractSource
 {
+    public const PROXY = 'proxy';
+    public const CACHE = 'cache';
+
     public function getAllOptions()
     {
         $this->_options = [
-            ['label' => 'Proxy', 'value' => ModeEnum::Proxy->value],
-            ['label' => 'Cache', 'value' => ModeEnum::Cache->value]
+            ['label' => 'Proxy', 'value' => static::PROXY],
+            ['label' => 'Cache', 'value' => static::CACHE]
         ];
         return $this->_options;
     }

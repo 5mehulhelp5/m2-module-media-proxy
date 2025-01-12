@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SamJUK\MediaProxy\Model;
 
-use SamJUK\MediaProxy\Enum\Mode;
+use SamJUK\MediaProxy\Model\Config\Source\Mode;
 use SamJUK\MediaProxy\Api\ConfigInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 
@@ -14,7 +14,8 @@ class Config implements ConfigInterface
     private const XML_PATH_MODE = 'samjuk_media_proxy/general/mode';
     private const XML_PATH_UPSTREAM_HOST = 'samjuk_media_proxy/general/upstream_host';
 
-    private readonly ScopeConfigInterface $scopeConfig;
+    /** @readonly */
+    private ScopeConfigInterface $scopeConfig;
 
     public function __construct(
         ScopeConfigInterface $scopeConfigInterface
@@ -32,19 +33,19 @@ class Config implements ConfigInterface
         return rtrim($this->getValue(self::XML_PATH_UPSTREAM_HOST), '/');
     }
 
-    public function getMode(): Mode
+    public function getMode(): string
     {
-        return Mode::from($this->getValue(self::XML_PATH_MODE));
+        return $this->getValue(self::XML_PATH_MODE);
     }
 
     public function isProxyMode(): bool
     {
-        return $this->isEnabled() && $this->getMode() === Mode::Proxy;
+        return $this->isEnabled() && $this->getMode() === Mode::PROXY;
     }
 
     public function isCacheMode(): bool
     {
-        return $this->isEnabled() && $this->getMode() === Mode::Cache;
+        return $this->isEnabled() && $this->getMode() === Mode::CACHE;
     }
 
     private function getFlag($path, $scope = 'default', $scopeCode = null): bool
@@ -56,7 +57,8 @@ class Config implements ConfigInterface
         );
     }
 
-    private function getValue($path, $scope = 'default', $scopeCode = null): mixed
+    /** @return mixed */
+    private function getValue($path, $scope = 'default', $scopeCode = null)
     {
         return $this->scopeConfig->getValue(
             $path,

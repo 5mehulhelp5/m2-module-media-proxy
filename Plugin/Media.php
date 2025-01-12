@@ -11,8 +11,10 @@ use Magento\MediaStorage\App\Media as BaseMedia;
 
 class Media
 {
-    private readonly ConfigInterface $config;
-    private readonly RequestedMediaInterface $requestedMedia;
+    /** @readonly */
+    private ConfigInterface $config;
+    /** @readonly */
+    private RequestedMediaInterface $requestedMedia;
 
     public function __construct(
         ConfigInterface $config,
